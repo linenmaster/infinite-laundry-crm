@@ -17,7 +17,7 @@
             'cyb_web_customization/static/src/js/cyb_user_men_items.js',
         ],
         'web._assets_primary_variables': [
-            'cyb_web_customization/static/src/scss/custom.scss',
+            ('replace', 'web/static/src/scss/primary_variables.scss', 'cyb_web_customization/static/src/scss/css_variables.scss'),
         ],
     },
     'demo': [
