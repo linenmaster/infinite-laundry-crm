@@ -21,6 +21,11 @@
             </div>
         </xpath>
     </template>
+    <template id="web_login_custom" inherit_id="web.login">
+        <xpath expr="//button[@class='btn btn-primary']" position="attributes">
+            <attribute name="style">background-color: #FF5733; color: #FFFFFF;</attribute>
+        </xpath>
+    </template>
 
     <template id="webclient_offline_custom" inherit_id="web.webclient_offline">
         <xpath expr="//div[hasclass('card')]" position="replace">
