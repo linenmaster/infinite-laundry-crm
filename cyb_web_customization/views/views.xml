@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="custom_web_login_layout" inherit_id="web.login_layout">
+        <xpath expr="//div[@class='container py-5']" position="replace">
+            <div class="container py-5">
+                <div t-attf-class="card border-0 mx-auto bg-100 {{login_card_classes}} o_database_list" style="max-width: 300px;">
+                    <div class="card-body">
+                        <div t-attf-class="text-center pb-3 border-bottom {{'mb-3' if form_small else 'mb-4'}}">
+                            <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Logo" style="max-height:120px; max-width: 100%; width:auto"/>
+                        </div>
+                        <!-- You can modify or add new elements here -->
+                        <t t-out="0"/>
+                        <!--<div class="text-center small mt-4 pt-3 border-top" t-if="not disable_footer">
+                            <t t-if="not disable_database_manager">
+                                <a class="border-end pe-2 me-1" href="/web/database/manager">Manage Databases</a>
+                            </t>
+                            <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span></a>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="web_login_custom" inherit_id="web.login">
+        <xpath expr="//button[@class='btn btn-primary']" position="attributes">
+            <attribute name="style">background-color: #FF5733; color: #FFFFFF;</attribute>
+        </xpath>
+    </template>
+
+    <template id="webclient_offline_custom" inherit_id="web.webclient_offline">
+        <xpath expr="//div[hasclass('card')]" position="replace">
+            <div class="card">
+                <img t-attf-src="data:image/png;base64,{{odoo_icon}}" alt="Odoo logo"/>
+                <h2>Hi</h2>
+                <h1>You are offline</h1>
+                <p>Check your network connection and come back here. Odoo will load as soon as you're back online.</p>
+                <button onclick="location.reload()">Check again</button>
+            </div>
+        </xpath>
+    </template>
+
+
+    <record id="gff_view_form_simple_modif_custom_inherit" model="ir.ui.view">
+        <field name="name">simple_modif_custom_inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='preferences_page']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
